@@ -3,12 +3,10 @@ import {
   Button,
   Flex,
   Heading,
-  Image,
   Input,
   InputGroup,
   InputRightElement,
 } from "@chakra-ui/react";
-import { Link } from "wouter";
 import Layout from "../components/Layout";
 
 function Home() {
