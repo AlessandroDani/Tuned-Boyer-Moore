@@ -2,7 +2,6 @@ import {
     Box,
     Button,
     Flex,
-    Heading,
     Image,
 } from "@chakra-ui/react";
 import { Link } from "wouter";
@@ -20,9 +19,15 @@ function Navbar () {
                 >
                     <Flex alignItems="center" gap={4}>
                         <Image src="./logo.jpeg" alt="Logo" w="30px" />
-                        <Heading color="black" size="md">
+                        <Button 
+                        href="/"
+                        as={Link}
+                        color="black"
+                        size="md"
+                        variant="none"
+                        >
                             Search Pattern
-                        </Heading>
+                        </Button>
                     </Flex>
 
                     <Flex>
