@@ -27,13 +27,13 @@ function SearchPattern({ inputValue }) {
           <Input bg="white" placeholder="Enter you pattern here" />
           <Select w="20%" bg="#699FD9" color="white">
             <option
-              style={{ backgroundColor: "primary.600", color: "white" }}
+              style={{ backgroundColor: "white", color: "black" }}
               value="option1"
             >
               Star debugging
             </option>
             <option
-              style={{ backgroundColor: "primary.600", color: "white" }}
+              style={{ backgroundColor: "white", color: "black" }}
               value="option2"
             >
               Run without debugging
