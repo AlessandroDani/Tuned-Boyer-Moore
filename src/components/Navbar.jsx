@@ -2,7 +2,6 @@ import {
     Box,
     Button,
     Flex,
-    Heading,
     Image,
 } from "@chakra-ui/react";
 import { Link } from "wouter";
@@ -20,16 +19,22 @@ function Navbar () {
                 >
                     <Flex alignItems="center" gap={4}>
                         <Image src="./logo.jpeg" alt="Logo" w="30px" />
-                        <Heading color="black" size="md">
+                        <Button 
+                        href="/"
+                        as={Link}
+                        color="black"
+                        size="md"
+                        variant="none"
+                        >
                             Search Pattern
-                        </Heading>
+                        </Button>
                     </Flex>
 
                     <Flex>
                         <>
                             <Box display="flex" justifyContent="space-between">
                                 <Button
-                                    padding={10}
+                                    margin={10}
                                     color="black"
                                     variant="none"
                                     size="sm"
@@ -39,7 +44,7 @@ function Navbar () {
                                     Contact
                                 </Button>
                                 <Button
-                                    padding={10}
+                                    margin={10}
                                     color="black"
                                     variant="none"
                                     size="sm"
@@ -49,7 +54,7 @@ function Navbar () {
                                     Complexity
                                 </Button>
                                 <Button
-                                    padding={10}
+                                    margin={10}
                                     color="black"
                                     variant="none"
                                     size="sm"

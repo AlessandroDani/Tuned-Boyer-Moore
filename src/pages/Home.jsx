@@ -1,17 +1,28 @@
+import { useState } from 'react'
 import {
   Box,
   Button,
   Flex,
   Heading,
-  Image,
   Input,
   InputGroup,
   InputRightElement,
 } from "@chakra-ui/react";
-import { Link } from "wouter";
 import Layout from "../components/Layout";
+import { Link } from "wouter";
 
-function Home() {
+
+function Home({ setInputValue }) {
+  const [value, setValue] = useState("");
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    setInputValue(value);
+  };
+
   return (
     <>
       <Layout>
@@ -34,7 +45,9 @@ function Home() {
                   textWrap: "balance",
                 }}
               >
-                Enter the text where you want <span style={{ color: "#1D5CA9" }}>to search</span> for the pattern
+                Enter the text where you want{" "}
+                <span style={{ color: "#1D5CA9" }}>to search</span> for the
+                pattern
               </Heading>
 
               <Flex mt={4} gap={2} justifyContent="center" p={4}>
@@ -44,11 +57,15 @@ function Home() {
                     type="text"
                     placeholder="Enter your text here"
                     bg="white"
+                    value={value}
+                    onChange={handleChange}
                   />
                   <InputRightElement width="4.5rem">
-                    <Button colorScheme="primary" size="sm">
-                      Enviar
-                    </Button>
+                    <Link href="/search-pattern">
+                      <Button colorScheme="primary" size="sm" onClick={handleSubmit}>
+                        Enviar
+                      </Button>
+                    </Link>
                   </InputRightElement>
                 </InputGroup>
               </Flex>
@@ -59,5 +76,7 @@ function Home() {
     </>
   );
 }
+
+
 
 export default Home;
