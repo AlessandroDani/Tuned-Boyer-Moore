@@ -34,7 +34,7 @@ function Navbar () {
                         <>
                             <Box display="flex" justifyContent="space-between">
                                 <Button
-                                    padding={10}
+                                    margin={10}
                                     color="black"
                                     variant="none"
                                     size="sm"
@@ -44,7 +44,7 @@ function Navbar () {
                                     Contact
                                 </Button>
                                 <Button
-                                    padding={10}
+                                    margin={10}
                                     color="black"
                                     variant="none"
                                     size="sm"
@@ -54,7 +54,7 @@ function Navbar () {
                                     Complexity
                                 </Button>
                                 <Button
-                                    padding={10}
+                                    margin={10}
                                     color="black"
                                     variant="none"
                                     size="sm"
