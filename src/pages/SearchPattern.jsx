@@ -9,19 +9,26 @@ import {
 } from "@chakra-ui/react";
 import { myAlgorithm } from "../algorithms/tuned-boyer-moore";
 import Layout from "../components/Layout";
+import Debugger from "../components/Debugger";
 import { useState } from "react";
 
 function SearchPattern({ inputValue }) {
   const [pattern, setPattern] = useState("");
   const [highlightedText, setHighlightedText] = useState(inputValue);
   let [count, setCount] = useState(0);
+  const [executedLines, setExecutedLines] = useState([]);
 
   const handleChangePattern = (e) => {
     setPattern(e.target.value);
   };
 
   const handleRun = () => {
-    const indices = myAlgorithm(inputValue, pattern);
+    const result = myAlgorithm(inputValue, pattern);
+    const indices = result.indices;
+    setExecutedLines(result.executedLines);
+    setCount(indices.length);
+
+
     let newText;
     setCount(indices.length);
     indices.forEach(() => {
@@ -38,10 +45,15 @@ function SearchPattern({ inputValue }) {
       <Layout>
         <Box maxW="80vw" mx="auto" paddingTop={2}>
           <Text dangerouslySetInnerHTML={{ __html: highlightedText }}></Text>
+          <Debugger lines={executedLines} />
           <Center height="50px">
             <Divider borderColor="gray.400" orientation="horizontal" />
           </Center>
-          <Text>The pattern <span style={{ fontWeight: "bold"}}>{pattern}</span> has been found <span style={{fontWeight: "bold"}}>{count}</span> times in the text.</Text>
+          <Text>
+            The pattern <span style={{ fontWeight: "bold" }}>{pattern}</span>{" "}
+            has been found <span style={{ fontWeight: "bold" }}>{count}</span>{" "}
+            times in the text.
+          </Text>
           <Box display={"flex"} justifyContent={"center"} p={3}>
             <Heading size="md">Find Pattern</Heading>
           </Box>
@@ -52,18 +64,10 @@ function SearchPattern({ inputValue }) {
               value={pattern}
               onChange={handleChangePattern}
             />
-            <Button
-              colorScheme="green"
-              color="white"
-              onClick={handleRun}
-            >
+            <Button colorScheme="green" color="white" onClick={handleRun}>
               Run
             </Button>
-            <Button
-              colorScheme="primary"
-              color="white"
-              onClick={handleRun}
-            >
+            <Button colorScheme="primary" color="white" onClick={handleRun}>
               Debug
             </Button>
           </Box>
