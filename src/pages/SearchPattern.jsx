@@ -17,6 +17,7 @@ function SearchPattern({ inputValue }) {
   const [highlightedText, setHighlightedText] = useState(inputValue);
   let [count, setCount] = useState(0);
   const [executedLines, setExecutedLines] = useState([]);
+  const [Debug, setDebug] = useState(false);
 
   const handleChangePattern = (e) => {
     setPattern(e.target.value);
@@ -27,7 +28,7 @@ function SearchPattern({ inputValue }) {
     const indices = result.indices;
     setExecutedLines(result.executedLines);
     setCount(indices.length);
-
+    console.log(executedLines)
 
     let newText;
     setCount(indices.length);
@@ -40,12 +41,18 @@ function SearchPattern({ inputValue }) {
     setHighlightedText(newText);
   };
 
+  const toggleDebugger = () => {
+    setDebug(true);
+    handleRun();
+  };
+
   return (
     <>
       <Layout>
         <Box maxW="80vw" mx="auto" paddingTop={2}>
           <Text dangerouslySetInnerHTML={{ __html: highlightedText }}></Text>
-          <Debugger lines={executedLines} />
+          {Debug && <Debugger lines={executedLines} />}
+          
           <Center height="50px">
             <Divider borderColor="gray.400" orientation="horizontal" />
           </Center>
@@ -67,8 +74,8 @@ function SearchPattern({ inputValue }) {
             <Button colorScheme="green" color="white" onClick={handleRun}>
               Run
             </Button>
-            <Button colorScheme="primary" color="white" onClick={handleRun}>
-              Debug
+            <Button colorScheme="primary" color="white" onClick={toggleDebugger}>
+            {Debug}Debug
             </Button>
           </Box>
         </Box>
