@@ -1,4 +1,3 @@
-import React from 'react'
 import {Flex, Heading, Box, Stack, HStack, VStack, Divider, Image, Text, Link} from "@chakra-ui/react";
 import logoSistemas from '../assets/img/logo_vertical_Sistemas.png';
 import logoUFPS from '../assets/img/logoUFPS.png';
@@ -6,26 +5,24 @@ import logoUFPS from '../assets/img/logoUFPS.png';
 function Footer () {
     return (
         <footer className='page-footer'>
-            <Box p={{ base: 20}} marginInline="auto" bg='white'>
+            <Box marginTop={8} marginInline="auto" w='80%' h='90%'>
                 <Stack
                     spacing={{ base: 8, md: 0 }}
                     justifyContent="space-between"
                     direction={{ base: 'column', md: 'row' }}
                 >
                     <Box maxW="300px">
-                        <HStack spacing="25px">
+                        <HStack spacing="25px" alignContent='center'>
                         <Image
                             src={logoUFPS}
                             alt="Logo UFPS"
-                            w="150px"
-                            h="auto"
+                            w="50%"
                             borderRadius="md"
                         />
                         <Image
                             src={logoSistemas}
                             alt="Logo Sistemas"
-                            w="125px"
-                            h="auto"
+                            w="35%"
                             borderRadius="md"
                         />
                         </HStack>
@@ -43,16 +40,6 @@ function Footer () {
                                 <Link href="/algorithm" color='gray.500'>Algorithm</Link>
                                 <Link href="/complexity" color='gray.500'>Complexity</Link>
                                 <Link href="/contact" color='gray.500'>Contact</Link>
-                            </VStack>
-                        </VStack>
-                        <VStack spacing={4} alignItems="flex-start">
-                            <Text fontSize="md" fontWeight="bold">
-                                Contact
-                            </Text>
-                            <VStack spacing={2} alignItems="flex-start" color="gray.500">
-                                <Link href="#" color='gray.500' >Twitter</Link>
-                                <Link href="#" color='gray.500' >LinkedIn</Link>
-                                <Link href="#" color='gray.500' >Instagram</Link>
                             </VStack>
                         </VStack>
                     </HStack>
