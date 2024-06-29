@@ -23,7 +23,7 @@ function Navbar () {
                         href="/"
                         as={Link}
                         color="black"
-                        size="md"
+                        size="lg"
                         variant="none"
                         >
                             Search Pattern
@@ -36,7 +36,7 @@ function Navbar () {
                                 <Button
                                     color="black"
                                     variant="none"
-                                    size="sm"
+                                    size="md"
                                     as={Link}
                                     href="/home"
                                 >
@@ -45,7 +45,7 @@ function Navbar () {
                                 <Button
                                     color="black"
                                     variant="none"
-                                    size="sm"
+                                    size="md"
                                     as={Link}
                                     href="/home"
                                 >
@@ -54,7 +54,7 @@ function Navbar () {
                                 <Button
                                     color="black"
                                     variant="none"
-                                    size="sm"
+                                    size="md"
                                     as={Link}
                                     href="/algorithm"
                                 >
