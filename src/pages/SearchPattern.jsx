@@ -19,7 +19,6 @@ function SearchPattern({ inputValue }) {
   const [executedLines, setExecutedLines] = useState([]);
   const [Debug, setDebug] = useState(false);
   const [executionFinished, setExecutionFinished] = useState(false);
-  const [textOriginal, setTextOriginal] = useState("");
 
   const handleChangePattern = (e) => {
     setPattern(e.target.value);

@@ -18,6 +18,7 @@ export function myAlgorithm(text, pattern) {
     trackLine(6);
     for (let i = 0; i < m - 1; ++i) {
       trackLine(7);
+      trackLine(8);
       bmBc[pattern.charCodeAt(i)] = m - i - 1;
     }
   }
@@ -25,13 +26,16 @@ export function myAlgorithm(text, pattern) {
   function memset(text, character, m) {
     trackLine(11);
     let aux = '';
+    trackLine(12);
 
     for (let i = 0; i < m; i++) {
       trackLine(13);
       aux += character;
+      trackLine(14);
     }
 
     trackLine(15);
+    trackLine(16);
     return text + aux;
   }
 
@@ -71,6 +75,7 @@ export function myAlgorithm(text, pattern) {
     while (j <= n - m) {
       trackLine(35);
       k = bmBc[text.charCodeAt(j + m - 1)];
+      trackLine(36);
 
       while (k !== 0) {
         trackLine(37);
@@ -85,10 +90,12 @@ export function myAlgorithm(text, pattern) {
       if (j <= n - m && memcmp(text, j, m, pattern)) {
         trackLine(46);
         indices.push(j);
+        trackLine(47);
       }
 
       trackLine(48);
       j += shift;
+      trackLine(49);
     }
 
     trackLine(50);

@@ -29,10 +29,11 @@ const Debugger = ({ lines, onExecutionFinished}) => {
   const handleJump= () => {
 
     for(let i = indice.current; i < lines.length; i++){
-      if(lines[i] !== lines[i+1]){
+      if(lines[i] == 5 && lines[i+1] == 6){
         console.log('salta');
-        indice.current = i;
-        setCurrentLine(i);
+        indice.current = i+1;
+        setCurrentLine(i+1);
+        handleContinue();
         break;
       }
     }
