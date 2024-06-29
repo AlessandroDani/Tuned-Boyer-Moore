@@ -7,11 +7,11 @@ import {
   VStack,
   Divider,
   Image,
-  Text,
-  Link,
+  Text
 } from "@chakra-ui/react";
 import logoSistemas from "../assets/img/logo_vertical_Sistemas.png";
 import logoUFPS from "../assets/img/logoUFPS.png";
+import { Link } from "wouter";
 
 function Footer() {
   return (
