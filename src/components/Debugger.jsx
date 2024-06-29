@@ -42,7 +42,7 @@ const Debugger = ({ lines, onExecutionFinished}) => {
 
   return (
     <Box display="flex" justifyContent="flex-end" flexDir="column-reverse">
-      <Box justifyContent="end" ml="auto">
+      <Box justifyContent='center' m='auto'>
         <IconButton
           colorScheme="green"
           size="sm"

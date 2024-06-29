@@ -18,28 +18,30 @@ function SearchPattern({ inputValue }) {
   const [count, setCount] = useState(0);
   const [executedLines, setExecutedLines] = useState([]);
   const [Debug, setDebug] = useState(false);
-  const [executionFinished, setExecutionFinished] = useState(false);
+  const [, setExecutionFinished] = useState(false);
 
   const handleChangePattern = (e) => {
     setPattern(e.target.value);
   };
 
-
   const handleRun = () => {
-    console.log('si');
     const result = myAlgorithm(inputValue, pattern);
-    const indices = result.indices;
-    setExecutedLines(result.executedLines);
-    setCount(indices.length);
-    let newText = inputValue;
-    setCount(indices.length);
-    indices.forEach(() => {
-      newText = inputValue.replace(
-        new RegExp(pattern, "g"),
-        (match) => `<span class="highlight">${match}</span>`
-      );
-    });
-    setHighlightedText(newText);
+    if (pattern) {
+      const indices = result.indices;
+      setExecutedLines(result.executedLines);
+      setCount(indices.length <= 1 ? 0 : indices.length);
+      let newText = inputValue;
+      setCount(indices.length);
+      indices.forEach(() => {
+        newText = inputValue.replace(
+          new RegExp(pattern, "g"),
+          (match) => `<span class="highlight">${match}</span>`
+        );
+      });
+      setHighlightedText(newText);
+    }else{
+      setCount(0);
+    }
   };
 
   const toggleDebugger = () => {
@@ -51,12 +53,11 @@ function SearchPattern({ inputValue }) {
   };
 
   const handleExecutionFinish = (finished) => {
-    console.log('entra', finished);
+    //console.log('entra', finished);
     setExecutionFinished(finished);
-    console.log(executionFinished);
-    if(finished){
+    if (finished) {
       handleRun();
-    }else{
+    } else {
       setHighlightedText(inputValue);
     }
   };
@@ -66,14 +67,17 @@ function SearchPattern({ inputValue }) {
       <Layout>
         <Box maxW="80vw" mx="auto" paddingTop={0}>
           <Box display="flex" width="100%" height="100%">
-            <Box w='100%' paddingRight={3} overflow='auto' maxH='50vh'>
+            <Box w="100%" paddingRight={3} overflow="auto" maxH="50vh">
               <Text
                 dangerouslySetInnerHTML={{ __html: highlightedText }}
               ></Text>
             </Box>
             {Debug && (
               <Box w="60%">
-                <Debugger lines={executedLines} onExecutionFinished={handleExecutionFinish} />
+                <Debugger
+                  lines={executedLines}
+                  onExecutionFinished={handleExecutionFinish}
+                />
               </Box>
             )}
           </Box>

@@ -9,11 +9,12 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import Layout from "../components/Layout";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 
 function Home({ setInputValue }) {
   const [value, setValue] = useState("");
+  const [, navigate] = useLocation();
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -21,6 +22,13 @@ function Home({ setInputValue }) {
 
   const handleSubmit = () => {
     setInputValue(value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+      navigate('/search-pattern');
+    }
   };
 
   return (
@@ -59,6 +67,7 @@ function Home({ setInputValue }) {
                     bg="white"
                     value={value}
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                   />
                   <InputRightElement width="4.5rem">
                     <Link href="/search-pattern">

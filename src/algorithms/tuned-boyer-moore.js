@@ -44,8 +44,9 @@ export function myAlgorithm(text, pattern) {
     trackLine(18);
     for (let i = 0; i < m; i++) {
       trackLine(19);
+      trackLine(20);
       if (text[j + i] !== pattern[i]) {
-        trackLine(20);
+        trackLine(21);
         return false;
       }
     }
