@@ -21,7 +21,7 @@ const Debugger = ({ lines, onExecutionFinished}) => {
   };
 
   const handleStop = () => {
-    setCurrentLine(51);
+    setCurrentLine(null);
     indice.current = 1;
     onExecutionFinished(false);
   };
