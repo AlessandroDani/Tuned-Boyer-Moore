@@ -9,7 +9,7 @@ import { Link } from "wouter";
 function Navbar () {
     return (
         <>
-            <Box>
+            <Box margin={8}>
                 <Flex
                     w="100%"
                     mx="auto"
@@ -17,8 +17,8 @@ function Navbar () {
                     maxW="container.xl"
                     justifyContent="space-between"
                 >
-                    <Flex alignItems="center" gap={4}>
-                        <Image src="./logo.jpeg" alt="Logo" w="30px" />
+                    <Flex alignItems="center">
+                        <Image src="./logo.png" alt="Logo" w="30px" />
                         <Button 
                         href="/"
                         as={Link}
@@ -32,9 +32,8 @@ function Navbar () {
 
                     <Flex>
                         <>
-                            <Box display="flex" justifyContent="space-between">
+                            <Box display="flex" justifyContent="space-between" alignItems='center'>
                                 <Button
-                                    margin={10}
                                     color="black"
                                     variant="none"
                                     size="sm"
@@ -44,7 +43,6 @@ function Navbar () {
                                     Contact
                                 </Button>
                                 <Button
-                                    margin={10}
                                     color="black"
                                     variant="none"
                                     size="sm"
@@ -54,7 +52,6 @@ function Navbar () {
                                     Complexity
                                 </Button>
                                 <Button
-                                    margin={10}
                                     color="black"
                                     variant="none"
                                     size="sm"
