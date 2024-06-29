@@ -11,6 +11,7 @@ export function myAlgorithm(text, pattern) {
     trackLine(3);
     for (let i = 0; i < ASIZE; ++i) {
       trackLine(4);
+      trackLine(5);
       bmBc[i] = m;
     }
 
