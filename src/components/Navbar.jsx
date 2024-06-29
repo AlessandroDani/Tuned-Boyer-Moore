@@ -23,20 +23,19 @@ function Navbar () {
                         href="/"
                         as={Link}
                         color="black"
-                        size="md"
+                        size="lg"
                         variant="none"
                         >
                             Search Pattern
                         </Button>
                     </Flex>
-
                     <Flex>
                         <>
                             <Box display="flex" justifyContent="space-between" alignItems='center'>
                                 <Button
                                     color="black"
                                     variant="none"
-                                    size="sm"
+                                    size="md"
                                     as={Link}
                                     href="/home"
                                 >
@@ -45,16 +44,16 @@ function Navbar () {
                                 <Button
                                     color="black"
                                     variant="none"
-                                    size="sm"
+                                    size="md"
                                     as={Link}
-                                    href="/home"
+                                    href="/complexity"
                                 >
                                     Complexity
                                 </Button>
                                 <Button
                                     color="black"
                                     variant="none"
-                                    size="sm"
+                                    size="md"
                                     as={Link}
                                     href="/algorithm"
                                 >

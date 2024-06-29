@@ -26,7 +26,7 @@ function SearchPattern({ inputValue }) {
 
   const handleRun = () => {
     const result = myAlgorithm(inputValue, pattern);
-    if (pattern) {
+    if (pattern && inputValue) {
       const indices = result.indices;
       setExecutedLines(result.executedLines);
       setCount(indices.length <= 1 ? 0 : indices.length);
@@ -41,6 +41,7 @@ function SearchPattern({ inputValue }) {
       setHighlightedText(newText);
     } else {
       setCount(0);
+      setHighlightedText(inputValue);
     }
   };
 
