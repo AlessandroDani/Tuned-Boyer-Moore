@@ -29,7 +29,6 @@ function Navbar () {
                             Search Pattern
                         </Button>
                     </Flex>
-
                     <Flex>
                         <>
                             <Box display="flex" justifyContent="space-between" alignItems='center'>
@@ -47,7 +46,7 @@ function Navbar () {
                                     variant="none"
                                     size="md"
                                     as={Link}
-                                    href="/home"
+                                    href="/complexity"
                                 >
                                     Complexity
                                 </Button>
