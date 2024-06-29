@@ -2,7 +2,6 @@ import {
     Box,
     Button,
     Flex,
-    Heading,
     Image,
 } from "@chakra-ui/react";
 import { Link } from "wouter";
@@ -10,7 +9,7 @@ import { Link } from "wouter";
 function Navbar () {
     return (
         <>
-            <Box>
+            <Box margin={8}>
                 <Flex
                     w="100%"
                     mx="auto"
@@ -18,29 +17,34 @@ function Navbar () {
                     maxW="container.xl"
                     justifyContent="space-between"
                 >
-                    <Flex alignItems="center" gap={4}>
-                        <Image src="./logo.jpeg" alt="Logo" w="30px" />
-                        <Heading color="black" size="md">
+                    <Flex alignItems="center">
+                        <Image src="./logo.png" alt="Logo" w="30px" />
+                        <Button 
+                        href="/"
+                        as={Link}
+                        color="black"
+                        size="md"
+                        variant="none"
+                        >
                             Search Pattern
-                        </Heading>
+                        </Button>
                     </Flex>
+
                     <Flex>
                         <>
-                            <Box display="flex" justifyContent="space-between">
+                            <Box display="flex" justifyContent="space-between" alignItems='center'>
                                 <Button
-                                    padding={10}
                                     color="black"
-                                    variant="none"
+                                    variant="ghost"
                                     size="sm"
                                     as={Link}
-                                    href="/home"
+                                    href="/contact"
                                 >
                                     Contact
                                 </Button>
                                 <Button
-                                    padding={10}
                                     color="black"
-                                    variant="none"
+                                    variant="ghost"
                                     size="sm"
                                     as={Link}
                                     href="/complexity"
@@ -48,9 +52,8 @@ function Navbar () {
                                     Complexity
                                 </Button>
                                 <Button
-                                    padding={10}
                                     color="black"
-                                    variant="none"
+                                    variant="ghost"
                                     size="sm"
                                     as={Link}
                                     href="/algorithm"

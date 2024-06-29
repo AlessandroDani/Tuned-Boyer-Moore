@@ -1,13 +1,12 @@
 import React from 'react'
 import {Flex, Heading, Box, Stack, HStack, VStack, Divider, Image, Text, Button, IconButton, Link} from "@chakra-ui/react";
-//import { Link } from "wouter";
-import logoSistemas from '../assets/images/logo_vertical_ingenieriaSistemas.png';
-import logoUFPS from '../assets/images/Logo-nuevo-vertical.png';
+import logoSistemas from '../assets/img/logo_vertical_Sistemas.png';
+import logoUFPS from '../assets/img/logoUFPS.png';
 
 function Footer () {
     return (
         <footer className='page-footer'>
-            <Box p={{ base: 5, md: 8 }} maxW="5xl" marginInline="auto">
+            <Box p={{ base: 20}} marginInline="auto" bg='white'>
                 <Stack
                     spacing={{ base: 8, md: 0 }}
                     justifyContent="space-between"
