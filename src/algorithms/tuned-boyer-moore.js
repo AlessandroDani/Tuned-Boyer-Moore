@@ -39,6 +39,7 @@ export function myAlgorithm(text, pattern) {
     return text + aux;
   }
 
+
   function memcmp(text, j, m, pattern) {
     trackLine(18);
     for (let i = 0; i < m; i++) {
@@ -77,16 +78,24 @@ export function myAlgorithm(text, pattern) {
       k = bmBc[text.charCodeAt(j + m - 1)];
       trackLine(36);
 
+      trackLine(37);
       while (k !== 0) {
-        trackLine(37);
+        trackLine(38);
         j += k;
+        trackLine(39);
         k = bmBc[text.charCodeAt(j + m - 1)];
+        trackLine(40);
         j += k;
+        trackLine(41);
         k = bmBc[text.charCodeAt(j + m - 1)];
+        trackLine(42);
         j += k;
+        trackLine(43);
         k = bmBc[text.charCodeAt(j + m - 1)];
+        trackLine(44);
       }
 
+      trackLine(45);
       if (j <= n - m && memcmp(text, j, m, pattern)) {
         trackLine(46);
         indices.push(j);
