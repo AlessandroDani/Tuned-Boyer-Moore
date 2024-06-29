@@ -6,10 +6,9 @@ import Contact from "./pages/Contact";
 import SearchPatternPage from "./pages/SearchPattern"
 import { useState } from "react";
 import "./App.css";
-import Complexity from "./pages/Complexity";
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(''); 
 
   return (
     <>
@@ -17,8 +16,9 @@ function App() {
         <Route path="/">
           <HomePage setInputValue={setInputValue} />
         </Route>
-        <Route component={Algorithm} path="/algorithm" />
-        <Route component={Complexity} path="/complexity" />
+        <Route path="/algorithm">
+          <Algorithm />
+        </Route>
         <Route path="/search-pattern">
           <SearchPatternPage inputValue={inputValue} />
         </Route>
