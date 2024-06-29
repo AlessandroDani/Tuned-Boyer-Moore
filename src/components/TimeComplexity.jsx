@@ -47,7 +47,7 @@ const TimeComplexity = ({ selectedLine, index}) => {
         },
         4: {
 
-            4: "OE: 5 - Inicialización, pregunta e incremento del ciclo. / O(m) El ciclo itera σ veces en donde m es el tamaño del patrón.",
+            4: "OE: 5 - Inicialización, pregunta e incremento del ciclo. / O(m) El ciclo itera m veces en donde m es el tamaño del patrón.",
             7: "OE: 4 - Comparación de exactitud en caracteres del patrón y el texto.",
             10: "OE: 1 - Return con un valor booleano si incumple la coincidencia.",
             16: "OE: 1 - Return con un valor booleano si cumple con todas las coincidencias."
@@ -63,7 +63,7 @@ const TimeComplexity = ({ selectedLine, index}) => {
                 p='40px'
                 color='white'
                 mt='4'
-                bg='teal.500'
+                bg='blue.500'
                 rounded='md'
                 shadow='md'
                 >

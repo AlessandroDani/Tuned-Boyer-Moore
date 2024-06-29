@@ -34,17 +34,17 @@ function Navbar () {
                             <Box display="flex" justifyContent="space-between" alignItems='center'>
                                 <Button
                                     color="black"
-                                    variant="none"
-                                    size="md"
+                                    variant="ghost"
+                                    size="sm"
                                     as={Link}
-                                    href="/home"
+                                    href="/contact"
                                 >
                                     Contact
                                 </Button>
                                 <Button
                                     color="black"
-                                    variant="none"
-                                    size="md"
+                                    variant="ghost"
+                                    size="sm"
                                     as={Link}
                                     href="/complexity"
                                 >
@@ -52,8 +52,8 @@ function Navbar () {
                                 </Button>
                                 <Button
                                     color="black"
-                                    variant="none"
-                                    size="md"
+                                    variant="ghost"
+                                    size="sm"
                                     as={Link}
                                     href="/algorithm"
                                 >
