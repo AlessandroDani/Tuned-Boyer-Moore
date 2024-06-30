@@ -46,6 +46,8 @@ function SearchPattern({ inputValue }) {
   };
 
   const toggleDebugger = () => {
+    setCount(0);
+    setHighlightedText(inputValue);
     const result = myAlgorithm(inputValue, pattern);
     const indices = result.indices;
     setExecutedLines(result.executedLines);
