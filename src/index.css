@@ -4,3 +4,19 @@
     color: white;
   }
   
+  .keyword {
+    color: blue;
+  }
+  
+  .variable {
+    color: purple;
+  }
+  
+  .function {
+    color: green;
+  }
+  
+  .number {
+    color: orange;
+  }
+  
