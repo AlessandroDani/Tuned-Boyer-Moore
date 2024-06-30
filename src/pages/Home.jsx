@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -7,10 +7,13 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Text,
+  Image,
 } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import { Link, useLocation } from "wouter";
-
+import Introduction from "../assets/img/introduction.png";
+import Debugger from "../components/Debugger";
 
 function Home({ setInputValue }) {
   const [value, setValue] = useState("");
@@ -25,9 +28,9 @@ function Home({ setInputValue }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSubmit();
-      navigate('/search-pattern');
+      navigate("/search-pattern");
     }
   };
 
@@ -35,9 +38,8 @@ function Home({ setInputValue }) {
     <>
       <Layout>
         <section>
-          <Flex
+          <Box
             w="90%"
-            gap={12}
             my={10}
             as="main"
             mx="auto"
@@ -45,10 +47,16 @@ function Home({ setInputValue }) {
             alignItems="center"
             flexDir={{ base: "column", md: "row" }}
           >
-            <Box w={{ md: "50%" }} mx="auto" textAlign="center">
+            <Box
+              w={{ md: "50%" }}
+              mx="auto"
+              textAlign="center"
+              mt="15vh"
+              mb="15vh"
+            >
               <Heading
                 mb={4}
-                size="xl"
+                size="2xl"
                 style={{
                   textWrap: "balance",
                 }}
@@ -71,7 +79,11 @@ function Home({ setInputValue }) {
                   />
                   <InputRightElement width="4.5rem">
                     <Link href="/search-pattern">
-                      <Button colorScheme="primary" size="sm" onClick={handleSubmit}>
+                      <Button
+                        colorScheme="primary"
+                        size="sm"
+                        onClick={handleSubmit}
+                      >
                         Enviar
                       </Button>
                     </Link>
@@ -79,13 +91,72 @@ function Home({ setInputValue }) {
                 </InputGroup>
               </Flex>
             </Box>
-          </Flex>
+          </Box>
+          <Box
+            display="flex"
+            justifyContent="center"
+            p={7}
+            paddingBottom={0}
+            borderRadius={9}
+            bg="white"
+          >
+            <Box w="80%">
+              <Heading size="xl" p={4}>
+              Pattern Search Application
+              </Heading>
+              <Box display="flex" flexDirection={{ base: "column", md: "row" }}>
+                <Box flex={1}>
+                  <Text fontSize="xl" p={2} paddingRight={4}>
+                  Our application is designed to help you find specific patterns within text using advanced search algorithms. Utilizing the optimized Boyer-Moore algorithm, known for its efficiency in searching patterns in large volumes of text, our tool is especially useful for data analysis, software development, and other applications where efficient pattern searching is crucial. This algorithm is ideal for applications that require fast text searches.
+                  </Text>
+                </Box>
+                <Box display="flex" flexDirection={{ base: "column", md: "row" }}>
+                  <Image
+                  w='600px'
+                  pb={9}
+                    borderRadius={9}
+                    src={Introduction}
+                    alt="Find Pattern"
+                  />
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+
+          <Box
+            display="flex"
+            justifyContent="center"
+            p={7}
+            paddingBottom={0}
+            borderRadius={9}
+            bg="#F5F5F5"
+          >
+            <Box w="80%">
+              <Heading size="xl" p={4}>
+                Debugger
+              </Heading>
+              <Box display="flex" flexDirection={{ base: "column", md: "row" }}>
+                <Box flex={1}>
+                  <Text fontSize="xl" p={2}>
+                    Our debugger allows you to see step by step how the
+                    algorithm executes. You can follow each line of code that
+                    runs, understand how the data is processed, and see exactly
+                    how the patterns are found. <br></br>This is especially
+                    useful for developers and students who want to gain a deep
+                    understanding of the algorithm&apos;s functioning
+                  </Text>
+                </Box>
+                <Box>
+                  <Debugger lines={""}
+                  onExecutionFinished={null} />
+                </Box>
+              </Box>
+            </Box>
+          </Box>
         </section>
       </Layout>
     </>
   );
 }
-
-
 
 export default Home;

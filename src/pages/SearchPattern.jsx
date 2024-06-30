@@ -113,7 +113,7 @@ function SearchPattern({ inputValue }) {
             has been found <span style={{ fontWeight: "bold" }}>{count}</span>{" "}
             times in the text.
           </Text>
-          <Box display={"flex"} justifyContent={"center"} paddingBottom={2}>
+          <Box display={"flex"} justifyContent={"center"} p={2}>
             <Heading size="md">Find Pattern</Heading>
           </Box>
           <Box display="flex" flexDir="row" mx="auto" gap={2}>
