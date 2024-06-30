@@ -7,6 +7,9 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
+  Button,
+  useDisclosure,
+  CloseButton
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CloseIcon, ArrowDownIcon } from "@chakra-ui/icons";
 import { useState, useRef, useEffect } from "react";
@@ -20,7 +23,12 @@ const Debugger = ({ lines, onExecutionFinished }) => {
   const [noSelectLine, setNoSelectLine] = useState(false);
   const indice = useRef(1);
   const lineRefs = useRef([]);
-  const [showAlert, setShowAlert] = useState(false); 
+
+  const {
+    isOpen: showAlert,
+    onClose: closeAlert,
+    onOpen: openAlert,
+  } = useDisclosure({ defaultIsOpen: false });
 
   useEffect(() => {
     if (lineRefs.current[currentLine]) {
@@ -32,7 +40,7 @@ const Debugger = ({ lines, onExecutionFinished }) => {
   }, [currentLine]);
 
   const handleContinue = () => {
-    setShowAlert(false);
+    closeAlert();
     if (indice.current < lines.length) {
       setCurrentLine(lines[indice.current] - 1);
       indice.current++;
@@ -54,24 +62,20 @@ const Debugger = ({ lines, onExecutionFinished }) => {
     for (let i = indice.current; i < lines.length && !found; i++) {
       if (lines[i] - 1 === selectedLine) {
         setCurrentLine(selectedLine);
-        indice.current = i+1;
+        indice.current = i + 1;
         found = true;
       }
     }
     if (!found) {
-      setShowAlert(true); 
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 10000); 
+      openAlert();
     } else {
-      setShowAlert(false);
+      closeAlert();
     }
   };
 
   const handleLineClick = (index) => {
     !noSelectLine ? setSelectedLine(index) : setSelectedLine(null);
     setNoSelectLine(!noSelectLine);
-    console.log("entra", ++index);
   };
 
   return (
@@ -109,15 +113,25 @@ const Debugger = ({ lines, onExecutionFinished }) => {
         </Tooltip>
       </Box>
 
-      {showAlert && ( 
+      {showAlert && (
         <Alert status="info">
           <AlertIcon />
-          <AlertTitle>Execution Information</AlertTitle>
-          <AlertDescription>
-          The code execution does not pass through this line or you have selected a line that the debugger has already passed. Please try another.
-          </AlertDescription>
+          <Box>
+            <AlertTitle>Execution Information</AlertTitle>
+            <AlertDescription>
+              The code execution does not pass through this line or you have selected a line that the debugger has already passed. Please try another.
+            </AlertDescription>
+          </Box>
+          <CloseButton
+            alignSelf='flex-start'
+            position='relative'
+            right={-1}
+            top={-1}
+            onClick={closeAlert}
+          />
         </Alert>
       )}
+
       <Box
         borderRadius={9}
         w="100%"
@@ -148,7 +162,7 @@ const Debugger = ({ lines, onExecutionFinished }) => {
             <Code
               whiteSpace="pre"
               flex="1"
-              colorScheme={currentLine === index ? highlightColor :  codeColor}
+              colorScheme={currentLine === index ? highlightColor : codeColor}
               style={{
                 overflowWrap: "break-word",
                 wordWrap: "break-word",
