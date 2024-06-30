@@ -36,9 +36,7 @@ const Debugger = ({ lines, onExecutionFinished }) => {
     if (indice.current < lines.length) {
       setCurrentLine(lines[indice.current] - 1);
       indice.current++;
-      console.log(lines[indice.current]);
     } else {
-      console.log(indice.current, lines.length);
       setCurrentLine(null);
       onExecutionFinished(true);
     }
@@ -52,14 +50,11 @@ const Debugger = ({ lines, onExecutionFinished }) => {
   };
 
   const handleJump = () => {
-    //console.log("select line", selectedLine);
     let found = false;
-    for (let i = indice.current; i < lines.length; i++) {
+    for (let i = indice.current; i < lines.length && !found; i++) {
       if (lines[i] - 1 === selectedLine) {
         setCurrentLine(selectedLine);
         indice.current = i+1;
-        found = true;
-        //console.log("la current line es ", currentLine);
         break;
       }
     }
@@ -69,7 +64,7 @@ const Debugger = ({ lines, onExecutionFinished }) => {
         setShowAlert(false);
       }, 10000); 
     } else {
-      setShowAlert(false); // Ocultar alerta si se encontró la línea seleccionada
+      setShowAlert(false);
     }
   };
 

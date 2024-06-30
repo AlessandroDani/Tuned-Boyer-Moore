@@ -1,4 +1,4 @@
-const ASIZE = 256;
+const ASIZE = 65553; // Este es el tamaño del alfabeto, para manejar caracteres fuera del rango ASCII 
 
 export function myAlgorithm(text, pattern) {
   const executedLines = [];
