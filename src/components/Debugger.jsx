@@ -7,7 +7,6 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
-  Button,
   useDisclosure,
   CloseButton
 } from "@chakra-ui/react";
