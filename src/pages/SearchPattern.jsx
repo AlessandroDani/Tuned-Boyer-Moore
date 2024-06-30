@@ -8,9 +8,9 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { myAlgorithm } from "../algorithms/tuned-boyer-moore";
-import Layout from "../components/Layout";
 import Debugger from "../components/Debugger";
 import { useState } from "react";
+import Navbar from "../components/Navbar";
 
 function SearchPattern({ inputValue }) {
   const [pattern, setPattern] = useState("");
@@ -69,51 +69,52 @@ function SearchPattern({ inputValue }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleRun();
     }
   };
 
   return (
     <>
-      <Layout>
-        <Box maxW="80vw" mx="auto" paddingTop={0}>
-          <Box display="flex" width="100%" height="100%">
-            <Box w="100%" overflow="auto" maxH="50vh">
-              <Text paddingRight={3}
-                dangerouslySetInnerHTML={{ __html: highlightedText }}
-              ></Text>
-            </Box>
-            {Debug && (
-              <Box w="60%">
-                <Box display='flex' justifyContent='end'>
-                  <Button
-                  colorScheme="red"
-                    color="white"
-                    onClick={closeDebugger}
-                    size='xs'
-                    marginTop='-23px'
-                    w={'10%'}
-                  >
-                    x
-                  </Button>
-                </Box>
-                <Debugger
-                  lines={executedLines}
-                  onExecutionFinished={handleExecutionFinish}
-                />
-              </Box>
-            )}
+      <Navbar />
+      <Box maxW="80vw" mx="auto" paddingTop={0}>
+        <Box display="flex" width="100%" height="100%">
+          <Box w="100%" overflow="auto" minH="55vh" maxH='55vh'>
+            <Text
+              paddingRight={3}
+              dangerouslySetInnerHTML={{ __html: highlightedText }}
+            ></Text>
           </Box>
-          <Center height="50px">
-            <Divider borderColor="gray.400" orientation="horizontal" />
-          </Center>
-          <Text>
-            The pattern <span style={{ fontWeight: "bold" }}>{pattern}</span>{" "}
-            has been found <span style={{ fontWeight: "bold" }}>{count}</span>{" "}
-            times in the text.
-          </Text>
-          <Box display={"flex"} justifyContent={"center"} paddingBottom={2}>
+          {Debug && (
+            <Box w="60%">
+              <Box display="flex" justifyContent="end">
+                <Button
+                  colorScheme="red"
+                  color="white"
+                  onClick={closeDebugger}
+                  size="xs"
+                  marginTop="-23px"
+                  w={"10%"}
+                >
+                  x
+                </Button>
+              </Box>
+              <Debugger
+                lines={executedLines}
+                onExecutionFinished={handleExecutionFinish}
+              />
+            </Box>
+          )}
+        </Box>
+        <Center height="50px">
+          <Divider borderColor="gray.400" orientation="horizontal" />
+        </Center>
+        <Text>
+          The pattern <span style={{ fontWeight: "bold" }}>{pattern}</span> has
+          been found <span style={{ fontWeight: "bold" }}>{count}</span> times
+          in the text.
+        </Text>
+          <Box display={"flex"} justifyContent={"center"} p={2}>
             <Heading size="md">Find Pattern</Heading>
           </Box>
           <Box display="flex" flexDir="row" mx="auto" gap={2}>
@@ -136,7 +137,6 @@ function SearchPattern({ inputValue }) {
             </Button>
           </Box>
         </Box>
-      </Layout>
     </>
   );
 }

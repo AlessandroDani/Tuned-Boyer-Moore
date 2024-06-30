@@ -1,7 +1,5 @@
 import { Image, Divider,Text, Box, Flex, Heading, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, ListItem, OrderedList, UnorderedList, HStack } from '@chakra-ui/react'
-import React from "react";
 import YoutubePlayer from 'react-player/youtube';
-import { Link } from "wouter";
 import Layout from '../components/Layout';
 import Portada from '../assets/img/portadaVideo.png';
 import Diagrama from '../assets/img/diagramaFlujo.png';
@@ -10,7 +8,6 @@ import Moore from '../assets/img/Moore.png';
 import Example from '../assets/img/exampleTBM.png';
 import Patrones from '../assets/img/patrones.png';
 import Example1 from '../assets/img/example1.png';
-import Example2 from '../assets/img/example2.png';
 import Example3 from '../assets/img/example3.png';
 import Example4 from '../assets/img/example4.png';
 import Example5 from '../assets/img/example5.png';

@@ -1,6 +1,5 @@
-import React from "react";
 import Layout from "../components/Layout";
-import {Card, CardHeader, CardBody, CardFooter, Flex, Avatar, Text, Heading, Box, Image, Button, IconButton, HStack, UnorderedList, ListItem} from '@chakra-ui/react';
+import {Card, CardHeader, CardBody, CardFooter, Flex, Avatar, Text, Heading, Box, IconButton, HStack, UnorderedList, ListItem} from '@chakra-ui/react';
 import ProfileIMG1 from '../assets/img/alessandro.jpg'
 import ProfileIMG2 from '../assets/img/juan.jpeg'
 import {FaLinkedin, FaGithub} from 'react-icons/fa';
@@ -39,9 +38,9 @@ function Contact ()
                             </Text>
                             <br></br>
                             <UnorderedList>
-                                <ListItem>I'm based in Colombia</ListItem>
+                                <ListItem>I&apos;m based in Colombia</ListItem>
                                 <ListItem>You can contact me at alessandrodaniele07@gmail.com</ListItem>
-                                <ListItem>I'm learning Spring Boot</ListItem>
+                                <ListItem>I&apos;m learning Spring Boot</ListItem>
                             </UnorderedList>   
                         </CardBody>
                         <CardFooter
@@ -130,6 +129,6 @@ function Contact ()
 
     );
 
-};
+}
 
 export default Contact

@@ -39,6 +39,7 @@ const Debugger = ({ lines, onExecutionFinished }) => {
   }, [currentLine]);
 
   const handleContinue = () => {
+    if(lines !== ''){
     closeAlert();
     if (indice.current < lines.length) {
       setCurrentLine(lines[indice.current] - 1);
@@ -47,16 +48,20 @@ const Debugger = ({ lines, onExecutionFinished }) => {
       setCurrentLine(null);
       onExecutionFinished(true);
     }
+  }
   };
 
   const handleStop = () => {
+    if(lines !== ''){
     setCurrentLine(null);
     indice.current = 1;
     onExecutionFinished(false);
     setSelectedLine(null);
+    }
   };
 
   const handleJump = () => {
+    if(lines !== ''){
     let found = false;
     for (let i = indice.current; i < lines.length && !found; i++) {
       if (lines[i] - 1 === selectedLine) {
@@ -70,6 +75,7 @@ const Debugger = ({ lines, onExecutionFinished }) => {
     } else {
       closeAlert();
     }
+  }
   };
 
   const handleLineClick = (index) => {
