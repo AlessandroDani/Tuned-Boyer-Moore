@@ -55,7 +55,7 @@ const Debugger = ({ lines, onExecutionFinished }) => {
       if (lines[i] - 1 === selectedLine) {
         setCurrentLine(selectedLine);
         indice.current = i+1;
-        break;
+        found = true;
       }
     }
     if (!found) {
