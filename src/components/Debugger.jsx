@@ -1,20 +1,42 @@
-import { Box, Stack, Code, Text, IconButton, Tooltip } from "@chakra-ui/react";
+import {
+  Box,
+  Code,
+  IconButton,
+  Tooltip,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from "@chakra-ui/react";
 import { ArrowForwardIcon, CloseIcon, ArrowDownIcon } from "@chakra-ui/icons";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { codeLines } from "../algorithms/codeLines";
 
 const Debugger = ({ lines, onExecutionFinished }) => {
   const codeColor = "#F2F2EF";
   const highlightColor = "blue";
-  const [currentLine, setCurrentLine] = useState(lines[0]);
+  const [currentLine, setCurrentLine] = useState(lines[0] - 1);
+  const [selectedLine, setSelectedLine] = useState(null);
+  const [noSelectLine, setNoSelectLine] = useState(false);
   const indice = useRef(1);
+  const lineRefs = useRef([]);
+  const [showAlert, setShowAlert] = useState(false); 
+
+  useEffect(() => {
+    if (lineRefs.current[currentLine]) {
+      lineRefs.current[currentLine].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [currentLine]);
 
   const handleContinue = () => {
+    setShowAlert(false);
     if (indice.current < lines.length) {
       setCurrentLine(lines[indice.current] - 1);
       indice.current++;
-      console.log(lines[indice.current]);
     } else {
-      console.log(indice.current, lines.length);
       setCurrentLine(null);
       onExecutionFinished(true);
     }
@@ -24,40 +46,57 @@ const Debugger = ({ lines, onExecutionFinished }) => {
     setCurrentLine(null);
     indice.current = 1;
     onExecutionFinished(false);
+    setSelectedLine(null);
   };
 
   const handleJump = () => {
-    for (let i = indice.current; i < lines.length; i++) {
-      if (lines[i] == 5 && lines[i + 1] == 6) {
-        console.log("salta");
-        indice.current = i + 1;
-        setCurrentLine(i + 1);
-        handleContinue();
+    let found = false;
+    for (let i = indice.current; i < lines.length && !found; i++) {
+      if (lines[i] - 1 === selectedLine) {
+        setCurrentLine(selectedLine);
+        indice.current = i+1;
         break;
       }
     }
+    if (!found) {
+      setShowAlert(true); 
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 10000); 
+    } else {
+      setShowAlert(false);
+    }
+  };
+
+  const handleLineClick = (index) => {
+    !noSelectLine ? setSelectedLine(index) : setSelectedLine(null);
+    setNoSelectLine(!noSelectLine);
+    console.log("entra", ++index);
   };
 
   return (
     <Box display="flex" justifyContent="flex-end" flexDir="column-reverse">
       <Box justifyContent="center" m="auto">
-      <Tooltip label="Step-by-Step Execution" aria-label="Step-by-Step  Execution">
-        <IconButton
-          colorScheme="green"
-          size="sm"
-          aria-label="Step"
-          icon={<ArrowForwardIcon />}
-          m={2}
-          onClick={handleContinue}
-        />
+        <Tooltip
+          label="Step-by-Step Execution"
+          aria-label="Step-by-Step  Execution"
+        >
+          <IconButton
+            colorScheme="green"
+            size="sm"
+            aria-label="Step"
+            icon={<ArrowForwardIcon />}
+            m={2}
+            onClick={handleContinue}
+          />
         </Tooltip>
         <Tooltip label="Continue Execution" aria-label="Continue Execution">
-        <IconButton
-          colorScheme="blue"
-          size="sm"
-          icon={<ArrowDownIcon />}
-          onClick={handleJump}
-        />
+          <IconButton
+            colorScheme="blue"
+            size="sm"
+            icon={<ArrowDownIcon />}
+            onClick={handleJump}
+          />
         </Tooltip>
         <Tooltip label="Stop Execution" aria-label="Stop Execution">
           <IconButton
@@ -70,193 +109,56 @@ const Debugger = ({ lines, onExecutionFinished }) => {
         </Tooltip>
       </Box>
 
+      {showAlert && ( 
+        <Alert status="info">
+          <AlertIcon />
+          <AlertTitle>Execution Information</AlertTitle>
+          <AlertDescription>
+          The code execution does not pass through this line or you have selected a line that the debugger has already passed. Please try another.
+          </AlertDescription>
+        </Alert>
+      )}
       <Box
         borderRadius={9}
         w="100%"
         p={2}
         maxH="50vh"
         bg={codeColor}
-        overflowY="auto"
+        overflow="auto"
       >
-        <Text>
-          <Stack direction="column">
-            <Code colorScheme={currentLine === 0 ? highlightColor : codeColor}>
-              1 const ASIZE = 256;
-            </Code>
-            <Code colorScheme={currentLine === 1 ? highlightColor : codeColor}>
-              2 export function myAlgorithm(text, pattern) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 2 ? highlightColor : codeColor}>
-              3&nbsp;&nbsp;function preBmBc(pattern, m, bmBc) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 3 ? highlightColor : codeColor}>
-              4&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i &lt; ASIZE; ++i) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 4 ? highlightColor : codeColor}>
-              5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmBc[i] = m;
-            </Code>
-            <Code colorScheme={currentLine === 5 ? highlightColor : codeColor}>
-              6&nbsp;&nbsp;&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 6 ? highlightColor : codeColor}>
-              7&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i &lt; m - 1; ++i) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 7 ? highlightColor : codeColor}>
-              8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmBc[pattern.charCodeAt(i)] =
-              m - i - 1;
-            </Code>
-            <Code colorScheme={currentLine === 8 ? highlightColor : codeColor}>
-              9&nbsp;&nbsp;&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 9 ? highlightColor : codeColor}>
-              10&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 10 ? highlightColor : codeColor}>
-              11&nbsp;&nbsp;function memset(text, character, m) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 11 ? highlightColor : codeColor}>
-              12&nbsp;&nbsp;&nbsp;&nbsp;let aux = {'""'};
-            </Code>
-            <Code colorScheme={currentLine === 12 ? highlightColor : codeColor}>
-              13&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i &lt; m; i++) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 13 ? highlightColor : codeColor}>
-              14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aux += character;
-            </Code>
-            <Code colorScheme={currentLine === 14 ? highlightColor : codeColor}>
-              15&nbsp;&nbsp;&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 15 ? highlightColor : codeColor}>
-              16&nbsp;&nbsp;&nbsp;&nbsp;return text + aux;
-            </Code>
-            <Code colorScheme={currentLine === 16 ? highlightColor : codeColor}>
-              17&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 17 ? highlightColor : codeColor}>
-              18&nbsp;&nbsp;function memcmp(text, j, m, pattern) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 18 ? highlightColor : codeColor}>
-              19&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i &lt; m; i++) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 19 ? highlightColor : codeColor}>
-              20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (text[j + i] !==
-              pattern[i]) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 20 ? highlightColor : codeColor}>
-              21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;
-            </Code>
-            <Code colorScheme={currentLine === 21 ? highlightColor : codeColor}>
-              22&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 22 ? highlightColor : codeColor}>
-              23&nbsp;&nbsp;&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 23 ? highlightColor : codeColor}>
-              24&nbsp;&nbsp;&nbsp;&nbsp;return true;
-            </Code>
-            <Code colorScheme={currentLine === 24 ? highlightColor : codeColor}>
-              25&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 25 ? highlightColor : codeColor}>
-              26&nbsp;&nbsp;function TUNEDBM(pattern, m, text, n) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 26 ? highlightColor : codeColor}>
-              27&nbsp;&nbsp;&nbsp;&nbsp;let j, k, shift;
-            </Code>
-            <Code colorScheme={currentLine === 27 ? highlightColor : codeColor}>
-              28&nbsp;&nbsp;&nbsp;&nbsp;const bmBc = new Array(ASIZE);
-            </Code>
-            <Code colorScheme={currentLine === 28 ? highlightColor : codeColor}>
-              29&nbsp;&nbsp;&nbsp;&nbsp;const indices = [];
-            </Code>
-            <Code colorScheme={currentLine === 29 ? highlightColor : codeColor}>
-              30&nbsp;&nbsp;&nbsp;&nbsp;preBmBc(pattern, m, bmBc);
-            </Code>
-            <Code colorScheme={currentLine === 30 ? highlightColor : codeColor}>
-              31&nbsp;&nbsp;&nbsp;&nbsp;shift = bmBc[pattern.charCodeAt(m - 1)];
-            </Code>
-            <Code colorScheme={currentLine === 31 ? highlightColor : codeColor}>
-              32&nbsp;&nbsp;&nbsp;&nbsp;bmBc[pattern.charCodeAt(m - 1)] = 0;
-            </Code>
-            <Code colorScheme={currentLine === 32 ? highlightColor : codeColor}>
-              33&nbsp;&nbsp;&nbsp;&nbsp;text = memset(text, pattern[m - 1], m);
-            </Code>
-            <Code colorScheme={currentLine === 33 ? highlightColor : codeColor}>
-              34&nbsp;&nbsp;&nbsp;&nbsp;j = 0;
-            </Code>
-            <Code colorScheme={currentLine === 34 ? highlightColor : codeColor}>
-              35&nbsp;&nbsp;&nbsp;&nbsp;while (j &lt;= n - m) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 35 ? highlightColor : codeColor}>
-              36&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = bmBc[text.charCodeAt(j +
-              m - 1)];
-            </Code>
-            <Code colorScheme={currentLine === 36 ? highlightColor : codeColor}>
-              37&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (k !== 0) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 37 ? highlightColor : codeColor}>
-              38&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j += k;
-            </Code>
-            <Code colorScheme={currentLine === 38 ? highlightColor : codeColor}>
-              39&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k =
-              bmBc[text.charCodeAt(j + m - 1)];
-            </Code>
-            <Code colorScheme={currentLine === 39 ? highlightColor : codeColor}>
-              40&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j += k;
-            </Code>
-            <Code colorScheme={currentLine === 40 ? highlightColor : codeColor}>
-              41&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k =
-              bmBc[text.charCodeAt(j + m - 1)];
-            </Code>
-            <Code colorScheme={currentLine === 41 ? highlightColor : codeColor}>
-              42&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j += k;
-            </Code>
-            <Code colorScheme={currentLine === 42 ? highlightColor : codeColor}>
-              43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k =
-              bmBc[text.charCodeAt(j + m - 1)];
-            </Code>
-            <Code colorScheme={currentLine === 43 ? highlightColor : codeColor}>
-              44&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 44 ? highlightColor : codeColor}>
-              45&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (j &lt;= n - m &&
-              memcmp(text, j, m, pattern)) {"{"}
-            </Code>
-            <Code colorScheme={currentLine === 45 ? highlightColor : codeColor}>
-              46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indices.push(j);
-            </Code>
-            <Code colorScheme={currentLine === 46 ? highlightColor : codeColor}>
-              47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 47 ? highlightColor : codeColor}>
-              48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j += shift;
-            </Code>
-            <Code colorScheme={currentLine === 48 ? highlightColor : codeColor}>
-              49&nbsp;&nbsp;&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 49 ? highlightColor : codeColor}>
-              50&nbsp;&nbsp;&nbsp;&nbsp;return indices;
-            </Code>
-            <Code colorScheme={currentLine === 50 ? highlightColor : codeColor}>
-              51&nbsp;&nbsp;{"}"}
-            </Code>
-            <Code colorScheme={currentLine === 51 ? highlightColor : codeColor}>
-              52&nbsp;&nbsp;const n = text.length;
-            </Code>
-            <Code colorScheme={currentLine === 52 ? highlightColor : codeColor}>
-              53&nbsp;&nbsp;const m = pattern.length;
-            </Code>
-            <Code colorScheme={currentLine === 53 ? highlightColor : codeColor}>
-              54&nbsp;&nbsp;const indices = TUNEDBM(pattern, m, text, n);
-            </Code>
-            <Code colorScheme={currentLine === 54 ? highlightColor : codeColor}>
-              55&nbsp;&nbsp;return indices;
-            </Code>
-            <Code colorScheme={currentLine === 55 ? highlightColor : codeColor}>
-              56 {"}"}
-            </Code>
-          </Stack>
-        </Text>
+        {codeLines.map((line, index) => (
+          <Box
+            key={index}
+            display="flex"
+            onClick={() => handleLineClick(index)}
+            ref={(el) => (lineRefs.current[index] = el)}
+            bg={selectedLine === index ? "tomato" : "transparent"}
+            borderRadius="sm"
+          >
+            <Box
+              width="30px"
+              textAlign="right"
+              pr={2}
+              userSelect="none"
+              color={currentLine === index ? highlightColor : "gray"}
+              cursor="pointer"
+            >
+              {index + 1}
+            </Box>
+            <Code
+              whiteSpace="pre"
+              flex="1"
+              colorScheme={currentLine === index ? highlightColor :  codeColor}
+              style={{
+                overflowWrap: "break-word",
+                wordWrap: "break-word",
+                wordBreak: "break-word",
+                display: "inline-block",
+              }}
+              dangerouslySetInnerHTML={{ __html: line }}
+            />
+          </Box>
+        ))}
       </Box>
     </Box>
   );

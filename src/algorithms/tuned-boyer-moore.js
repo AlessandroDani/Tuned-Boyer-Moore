@@ -1,4 +1,4 @@
-const ASIZE = 256;
+const ASIZE = 65553; // Este es el tamaño del alfabeto, para manejar caracteres fuera del rango ASCII 
 
 export function myAlgorithm(text, pattern) {
   const executedLines = [];
@@ -9,29 +9,34 @@ export function myAlgorithm(text, pattern) {
 
   function preBmBc(pattern, m, bmBc) {
     trackLine(3);
+
+    trackLine(4);
     for (let i = 0; i < ASIZE; ++i) {
-      trackLine(4);
       trackLine(5);
       bmBc[i] = m;
+      trackLine(4);
     }
-
     trackLine(6);
+
+    trackLine(7);
     for (let i = 0; i < m - 1; ++i) {
-      trackLine(7);
       trackLine(8);
       bmBc[pattern.charCodeAt(i)] = m - i - 1;
+      trackLine(7);
     }
   }
 
   function memset(text, character, m) {
     trackLine(11);
-    let aux = '';
-    trackLine(12);
 
+    trackLine(12);
+    let aux = '';
+    
+    trackLine(13);
     for (let i = 0; i < m; i++) {
-      trackLine(13);
-      aux += character;
       trackLine(14);
+      aux += character;
+      trackLine(13);
     }
 
     trackLine(15);
@@ -42,13 +47,15 @@ export function myAlgorithm(text, pattern) {
 
   function memcmp(text, j, m, pattern) {
     trackLine(18);
+
+    trackLine(19);
     for (let i = 0; i < m; i++) {
-      trackLine(19);
       trackLine(20);
       if (text[j + i] !== pattern[i]) {
         trackLine(21);
         return false;
       }
+      trackLine(19);
     }
 
     trackLine(24);
@@ -58,8 +65,11 @@ export function myAlgorithm(text, pattern) {
   function TUNEDBM(pattern, m, text, n) {
     trackLine(26);
     let j, k, shift;
+    trackLine(27);
     const bmBc = new Array(ASIZE);
+    trackLine(28);
     const indices = [];
+    trackLine(29);
 
     trackLine(30);
     preBmBc(pattern, m, bmBc);
@@ -74,10 +84,10 @@ export function myAlgorithm(text, pattern) {
     trackLine(34);
     j = 0;
 
+    trackLine(35);
     while (j <= n - m) {
-      trackLine(35);
-      k = bmBc[text.charCodeAt(j + m - 1)];
       trackLine(36);
+      k = bmBc[text.charCodeAt(j + m - 1)];
 
       trackLine(37);
       while (k !== 0) {
@@ -94,6 +104,7 @@ export function myAlgorithm(text, pattern) {
         trackLine(43);
         k = bmBc[text.charCodeAt(j + m - 1)];
         trackLine(44);
+        trackLine(37);
       }
 
       trackLine(45);
@@ -106,6 +117,7 @@ export function myAlgorithm(text, pattern) {
       trackLine(48);
       j += shift;
       trackLine(49);
+      trackLine(35);
     }
 
     trackLine(50);

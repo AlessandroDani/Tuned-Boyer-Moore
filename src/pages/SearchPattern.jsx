@@ -58,7 +58,6 @@ function SearchPattern({ inputValue }) {
   };
 
   const handleExecutionFinish = (finished) => {
-    //console.log('entra', finished);
     setExecutionFinished(finished);
     if (finished) {
       handleRun();
