@@ -1,3 +1,18 @@
+/**
+ * Debugger Component
+ *
+ * Este componente fue desarrollado con la asistencia de ChatGPT, un modelo de IA.
+ * Fecha de asistencia: [28/06/2024]
+ *
+ * Funcionalidad: Este componente esta encargado de mostar el codigo en un Box el cual
+ * se puede desplazar, sigue la linea en la que va, tiene un stop en una linea para que salte
+ * directamente ahi, y tiene un boton de parar la ejecución
+ *
+ * Partes asistidas por IA:
+ * - Lógica para traer el codigo de codeLines para mostrarlo en etiquetas Code.
+ * - Evento useEffect y handleLineClick para seguir la linea en la que va
+ */
+
 import {
   Box,
   Code,
@@ -8,7 +23,7 @@ import {
   AlertTitle,
   AlertDescription,
   useDisclosure,
-  CloseButton
+  CloseButton,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CloseIcon, ArrowDownIcon } from "@chakra-ui/icons";
 import { useState, useRef, useEffect } from "react";
@@ -29,6 +44,7 @@ const Debugger = ({ lines, onExecutionFinished }) => {
     onOpen: openAlert,
   } = useDisclosure({ defaultIsOpen: false });
 
+  //Inicio del código asistido por IA(ChatGPT 3.5)
   useEffect(() => {
     if (lineRefs.current[currentLine]) {
       lineRefs.current[currentLine].scrollIntoView({
@@ -38,50 +54,54 @@ const Debugger = ({ lines, onExecutionFinished }) => {
     }
   }, [currentLine]);
 
+  //Fin del código asistido por IA(ChatGPT 3.5)
+
   const handleContinue = () => {
-    if(lines !== ''){
-    closeAlert();
-    if (indice.current < lines.length) {
-      setCurrentLine(lines[indice.current] - 1);
-      indice.current++;
-    } else {
-      setCurrentLine(null);
-      onExecutionFinished(true);
+    if (lines !== "") {
+      closeAlert();
+      if (indice.current < lines.length) {
+        setCurrentLine(lines[indice.current] - 1);
+        indice.current++;
+      } else {
+        setCurrentLine(null);
+        onExecutionFinished(true);
+      }
     }
-  }
   };
 
   const handleStop = () => {
-    if(lines !== ''){
-    setCurrentLine(null);
-    indice.current = 1;
-    onExecutionFinished(false);
-    setSelectedLine(null);
+    if (lines !== "") {
+      setCurrentLine(null);
+      indice.current = 1;
+      onExecutionFinished(false);
+      setSelectedLine(null);
     }
   };
 
   const handleJump = () => {
-    if(lines !== ''){
-    let found = false;
-    for (let i = indice.current; i < lines.length && !found; i++) {
-      if (lines[i] - 1 === selectedLine) {
-        setCurrentLine(selectedLine);
-        indice.current = i + 1;
-        found = true;
+    if (lines !== "") {
+      let found = false;
+      for (let i = indice.current; i < lines.length && !found; i++) {
+        if (lines[i] - 1 === selectedLine) {
+          setCurrentLine(selectedLine);
+          indice.current = i + 1;
+          found = true;
+        }
+      }
+      if (!found) {
+        openAlert();
+      } else {
+        closeAlert();
       }
     }
-    if (!found) {
-      openAlert();
-    } else {
-      closeAlert();
-    }
-  }
   };
 
+  //Inicio del código asistido por IA(ChatGPT 3.5)
   const handleLineClick = (index) => {
     !noSelectLine ? setSelectedLine(index) : setSelectedLine(null);
     setNoSelectLine(!noSelectLine);
   };
+  //Fin del código asistido por IA(ChatGPT 3.5)
 
   return (
     <Box display="flex" justifyContent="flex-end" flexDir="column-reverse">
@@ -124,12 +144,14 @@ const Debugger = ({ lines, onExecutionFinished }) => {
           <Box>
             <AlertTitle>Execution Information</AlertTitle>
             <AlertDescription>
-              The code execution does not pass through this line or you have selected a line that the debugger has already passed. Please try another.
+              The code execution does not pass through this line or you have
+              selected a line that the debugger has already passed. Please try
+              another.
             </AlertDescription>
           </Box>
           <CloseButton
-            alignSelf='flex-start'
-            position='relative'
+            alignSelf="flex-start"
+            position="relative"
             right={-1}
             top={-1}
             onClick={closeAlert}
@@ -146,6 +168,7 @@ const Debugger = ({ lines, onExecutionFinished }) => {
         overflow="auto"
       >
         {codeLines.map((line, index) => (
+          //  Inicio del código asistido por IA(ChatGPT 3.5)
           <Box
             key={index}
             display="flex"
@@ -153,6 +176,7 @@ const Debugger = ({ lines, onExecutionFinished }) => {
             ref={(el) => (lineRefs.current[index] = el)}
             bg={selectedLine === index ? "tomato" : "transparent"}
             borderRadius="sm"
+            //  Fin del código asistido por IA(ChatGPT 3.5)
           >
             <Box
               width="30px"
@@ -168,12 +192,14 @@ const Debugger = ({ lines, onExecutionFinished }) => {
               whiteSpace="pre"
               flex="1"
               colorScheme={currentLine === index ? highlightColor : codeColor}
+              // Inicio del código asistido por IA(ChatGPT 3.5)
               style={{
                 overflowWrap: "break-word",
                 wordWrap: "break-word",
                 wordBreak: "break-word",
                 display: "inline-block",
               }}
+              // Fin del código asistido por IA(ChatGPT 3.5)
               dangerouslySetInnerHTML={{ __html: line }}
             />
           </Box>

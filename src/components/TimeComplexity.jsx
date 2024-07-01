@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Text, Collapse} from '@chakra-ui/react';
 
 const TimeComplexity = ({ selectedLine, index}) => {
