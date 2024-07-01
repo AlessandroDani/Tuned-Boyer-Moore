@@ -15,7 +15,7 @@
  * - Evento onClick y manejo de las referencia de las líneas seleccionadas.
  */
 
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Box, Popover, PopoverContent, PopoverHeader, PopoverBody, PopoverArrow, PopoverCloseButton} from '@chakra-ui/react';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
