@@ -1,7 +1,7 @@
 
 //Ejemplo de visualizador tomado de: https://github.com/Borja95/visualizadorPdfReact.git
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class PDF extends Component {
 
