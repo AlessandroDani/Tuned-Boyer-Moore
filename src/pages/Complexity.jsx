@@ -116,7 +116,7 @@ function TUNEDBM(x, m, y, n)
 
 }`;
     const [verPDF, setVerPDF] = React.useState(false);
-    const ruta = '/a.pdf';
+    const ruta = '/Costo Algoritmico 1152298 - 1152194.pdf';
 
     return (
         <Layout>
@@ -323,7 +323,7 @@ function TUNEDBM(x, m, y, n)
                     </>
                   ) : null}
                 </Box>
-                <a href={ruta} download="Costo Algoritmico Tuned Boyer Moore (1152298 - 1152194).pdf">
+                <a href={ruta} download="Costo Algoritmico 1152298 - 1152194.pdf">
                   <Button mt={15} colorScheme='blue'>Download pdf</Button>
                 </a>
               </CardBody>

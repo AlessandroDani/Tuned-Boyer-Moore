@@ -1,7 +1,7 @@
 
 //Ejemplo de visualizador tomado de: https://github.com/Borja95/visualizadorPdfReact.git
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class PDF extends Component {
 
@@ -16,13 +16,13 @@ class PDF extends Component {
         return (
             <div style={{position: 'flex', width: '100%', height: '100vh'}}>
                 <object
-                data='/a.pdf'
+                data='/Costo Algoritmico 1152298 - 1152194.pdf'
                 type="application/pdf"
                 width="100%"
                 height="100%"
                 >
                     <br />
-                    <a href='/a.pdf' id="enlaceDescargarPdf"
+                    <a href='/Costo Algoritmico 1152298 - 1152194.pdf' id="enlaceDescargarPdf"
                     download="ReactJS.pdf"
                     >Tu dispositivo no puede visualizar los PDF, da click aquí para descargarlo</a>
                 </object>
