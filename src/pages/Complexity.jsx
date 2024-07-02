@@ -166,11 +166,11 @@ function TUNEDBM(x, m, y, n)
                         </Text>
                         <br></br>
                         <Text pt='2' fontSize='sm'>
-                          It's important to clarify the algorithm's complexity. Due to the ( sigma ) iterations needed to determine shifts based on the alphabet size, the more accurate complexity of the algorithm is ( O(sigma + nm) ), where ( n ) is the size of the text and ( m ) is the size of the pattern. However, in practice, the alphabet size ( sigma ) is often constant when using the algorithm and only varies for very large and complex alphabets. Moreover, the ( sigma ) factor is much smaller compared to ( nm ) in average text searches.
+                          It&quot;s important to clarify the algorithm&quot;s complexity. Due to the ( sigma ) iterations needed to determine shifts based on the alphabet size, the more accurate complexity of the algorithm is ( O(sigma + nm) ), where ( n ) is the size of the text and ( m ) is the size of the pattern. However, in practice, the alphabet size ( sigma ) is often constant when using the algorithm and only varies for very large and complex alphabets. Moreover, the ( sigma ) factor is much smaller compared to ( nm ) in average text searches.
                         </Text>
                         <br></br>
                         <Text pt='2' fontSize='sm'>
-                          Therefore, certain articles and references simplify the worst-case complexity to ( O(nm) ), considering the alphabet size as a constant value. For our analysis, it's important to acknowledge both values, but we consider ( O(sigma + nm) ) to be more precise and suitable for practical purposes.
+                          Therefore, certain articles and references simplify the worst-case complexity to ( O(nm) ), considering the alphabet size as a constant value. For our analysis, it&quot;s important to acknowledge both values, but we consider ( O(sigma + nm) ) to be more precise and suitable for practical purposes.
                         </Text>
                       </Box>
                     </Stack>
@@ -285,7 +285,7 @@ function TUNEDBM(x, m, y, n)
                         </Heading>
                         <Text pt='2' fontSize='sm'>
                           Method responsible for comparing the characters of the corresponding text fragment at the pointer with the 
-                          characters of the pattern one by one. If an exact match is found, it returns a boolean value; if it's a 
+                          characters of the pattern one by one. If an exact match is found, it returns a boolean value; if it&apos;s a 
                           partial match, it returns another boolean value. It performs a loop with ( m ) iterations to compare all 
                           characters in the pattern.
                         </Text>
@@ -305,8 +305,7 @@ function TUNEDBM(x, m, y, n)
               <CardBody>
                 <Box>
                   <Button
-                    variant="ghost"
-                    bg='yellow.100'
+                    colorScheme='green'
                     onClick={() => {
                       setVerPDF(!verPDF);
                     }}
@@ -325,7 +324,7 @@ function TUNEDBM(x, m, y, n)
                   ) : null}
                 </Box>
                 <a href={ruta} download="Costo Algoritmico Tuned Boyer Moore (1152298 - 1152194).pdf">
-                  <Button mt={15} variant="ghost" bg='blue.500'>Download pdf</Button>
+                  <Button mt={15} colorScheme='blue'>Download pdf</Button>
                 </a>
               </CardBody>
             </Card>            

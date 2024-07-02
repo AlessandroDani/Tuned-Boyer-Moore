@@ -82,7 +82,7 @@ function Algorithm() {
                                     <Text>
                                         Boyer-Moore is of great importance as the standard benchmark for practical string searching. It was 
                                         developed by Robert S. Boyer and J Strother Moore in 1977 and described in an article titled 
-                                        "A Fast String Searching Algorithm," published in Communications of the ACM.
+                                        &quot;A Fast String Searching Algorithm,&quot; published in Communications of the ACM.
                                     </Text>
                                     <HStack align='center' justify='center'>
                                             <Image src={Boyer} alt='Boyer' m={10}/>
