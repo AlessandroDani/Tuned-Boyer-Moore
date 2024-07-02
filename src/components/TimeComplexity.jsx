@@ -7,52 +7,55 @@ const TimeComplexity = ({ selectedLine, index}) => {
 
         1: {
 
-            1: "OE: 2 - Declaración e Inicialización del alfabeto admitido.",
-            6: "OE: 3 - Declaración de variables auxiliares.",
-            7: "OE: k+2 - Declaración e inicialización de valores del alfabeto.",
-            9: "OE: 3+8-k+4σ+(m(k+6)) - Inicialización de caracteres del alfabeto y de los caracteres del patrón.",
-            10: "OE: k+3 - Inicialización de variable auxiliar para los saltos.",
-            11: "OE: k+2 - Asignación de 0 para los saltos del último caracter del patrón.",
-            13: "OE: 6+10+5m - Creación del centinela para evitar desbordamientos.",
-            15: "OE: 1 - Inicialización del apuntador.",
-            17: "OE: 1 - Comparación entre apuntador y tamaño del texto. / O(n) El ciclo itera sobre cada elemento del texto en su peor caso.",
-            20: "OE: k+3 - Asignación de saltos a partir del caracter apuntado.",
-            22: "OE: 1 - Comparación del valor auxiliar con los saltos. / O(1) El ciclo se ejecuta en un tiempo constante de 1 en su peor caso ya que realiza menos saltos.",
-            25: "OE: 2 - Asignación de saltos al apuntador.",
-            26: "OE: k+3 - Asignación de saltos a partir del caracter apuntado.",
-            27: "OE: 2 - Asignación de saltos al apuntador.",
-            28: "OE: k+3 - Asignación de saltos a partir del caracter apuntado.",
-            29: "OE: 2 - Asignación de saltos al apuntador.",
-            30: "OE: k+3 - Asignación de saltos a partir del caracter apuntado.",
-            34: "OE: 7+7+7m - Comparación de la coindicencia para garantizar una coincidencia exacta dentro de los límites del texto.",
-            37: "OE: k+1 - Impresión de la posición de la coincidencia.",
-            41: "OE: 2 - Suma de saltos del caracter final del patrón al apuntador.",
+            1: "EO: 2 - Declaration and Initialization of the allowed alphabet.",
+            6: "EO: 3 - Declaration of auxiliary variables.",
+            7: "EO: k+2 - Declaration and initialization of alphabet values.",
+            9: "EO: 3+8-k+4σ+(m(k+6)) - Initialization of alphabet characters and pattern characters.",
+            10: "EO: k+3 - Initialization of auxiliary variable for jumps.",
+            11: "EO: k+2 - Assignment of 0 for jumps of the last character of the pattern.",
+            13: "EO: 6+10+5m - Creation of sentinel to avoid overflows.",
+            15: "EO: 1 - Initialization of the pointer.",
+            17: "EO: 1 - Comparison between pointer and text size. / O(n) The cycle iterates over each element of the text in its worst case.",
+            20: "EO: k+3 - Assignment of jumps from the pointed character.",
+            22: "EO: 1 - Comparison of auxiliary value with jumps. / O(1) The cycle executes in a constant time of 1 in its worst case as it makes fewer jumps.",
+            25: "EO: 2 - Assignment of jumps to the pointer.",
+            26: "EO: k+3 - Assignment of jumps from the pointed character.",
+            27: "EO: 2 - Assignment of jumps to the pointer.",
+            28: "EO: k+3 - Assignment of jumps from the pointed character.",
+            29: "EO: 2 - Assignment of jumps to the pointer.",
+            30: "EO: k+3 - Assignment of jumps from the pointed character.",
+            34: "EO: 7+7+7m - Comparison of the match to ensure an exact match within the text limits.",
+            37: "EO: k+1 - Printing of the match position.",
+            41: "EO: 2 - Addition of jumps from the final character of the pattern to the pointer.",
 
-        },
+            },
+
         2: {
 
-            3: "OE: 5 - Inicialización, pregunta e incremento del ciclo. / O(σ) El ciclo itera σ veces en donde σ es el tamaño del alfabeto.",
-            4: "OE: 1 - Inicialización del vector de saltos para cada caracter.",
-            7: "OE: 6 - Inicialización, pregunta e incremento del ciclo. / O(m) El ciclo itera un total de m - 1 veces en donde m es el tamaño del patrón.",
-            8: "OE: k+2 - Asignación de saltos con posiciones relativas de los caracteres del patrón."
-    
+            3: "EO: 5 - Initialization, question and increment of the cycle. / O(σ) The cycle iterates σ times where σ is the size of the alphabet.",
+            4: "EO: 1 - Initialization of the jump vector for each character.",
+            7: "EO: 6 - Initialization, question and increment of the cycle. / O(m) The cycle iterates a total of m - 1 times where m is the size of the pattern.",
+            8: "EO: k+2 - Assignment of jumps with relative positions of the pattern characters."
+
         },
+
         3: {
 
-            4: "OE: 2 - Declaración y asignación de variable auxiliar.",
-            6: "OE: 5 - Inicialización, pregunta e incremento del ciclo. / O(m) El ciclo itera un total de m veces en donde m es el tamaño del patrón.",
-            9: "OE: 2 - Asignación de caracteres centinelas para el control de desbordamiento.",
-            13: "OE: 2 - Return con la nueva cadena de texto."
+            4: "EO: 2 - Declaration and assignment of auxiliary variable.",
+            6: "EO: 5 - Initialization, question and increment of the cycle. / O(m) The cycle iterates a total of m times where m is the size of the pattern.",
+            9: "EO: 2 - Assignment of sentinel characters for overflow control.",
+            13: "EO: 2 - Return with the new text string."
 
         },
+
         4: {
 
-            4: "OE: 5 - Inicialización, pregunta e incremento del ciclo. / O(m) El ciclo itera m veces en donde m es el tamaño del patrón.",
-            7: "OE: 4 - Comparación de exactitud en caracteres del patrón y el texto.",
-            10: "OE: 1 - Return con un valor booleano si incumple la coincidencia.",
-            16: "OE: 1 - Return con un valor booleano si cumple con todas las coincidencias."
+            4: "EO: 5 - Initialization, question and increment of the cycle. / O(m) The cycle iterates m times where m is the size of the pattern.",
+            7: "EO: 4 - Comparison of exactness in pattern and text characters.",
+            10: "EO: 1 - Return with a boolean value if the match fails.",
+            16: "EO: 1 - Return with a boolean value if all matches are met."
 
-        }
+        },
 
     };
   
