@@ -16,7 +16,7 @@ import { Link } from "wouter";
 function Footer() {
   return (
     <footer className="page-footer">
-      <Box marginTop={8} marginInline="auto" w="80%" h="90%">
+      <Box marginTop={35} marginInline="auto" w="80%" h="90%">
         <Stack
           spacing={{ base: 8, md: 0 }}
           justifyContent="space-between"

@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import {Card, CardHeader, CardBody, CardFooter, Flex, Avatar, Text, Heading, Box, IconButton, HStack, UnorderedList, ListItem} from '@chakra-ui/react';
+import {Card, Link, CardHeader, CardBody, CardFooter, Flex, Avatar, Text, Heading, Box, IconButton, HStack, UnorderedList, ListItem} from '@chakra-ui/react';
 import ProfileIMG1 from '../assets/img/alessandro.jpg'
 import ProfileIMG2 from '../assets/img/juan.jpeg'
 import {FaLinkedin, FaGithub} from 'react-icons/fa';
@@ -19,17 +19,11 @@ function Contact ()
                             <Flex spacing='4'>
                             <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
                                 <Avatar name='Alessandro Daniele' src={ProfileIMG1} />
-
                                 <Box>
-                                <Heading size='sm'>Alessandro Umberto Daniele Saltarin</Heading>
-                                <Text fontSize='xs'>System Engineering student and junior developer</Text>
+                                    <Heading size='sm'>Alessandro Umberto Daniele Saltarin</Heading>
+                                    <Text fontSize='xs'>System Engineering student and junior developer</Text>
                                 </Box>
                             </Flex>
-                            <IconButton
-                                variant='ghost'
-                                colorScheme='gray'
-                                aria-label='See menu'
-                            />
                             </Flex>
                         </CardHeader>
                         <CardBody>
@@ -44,42 +38,48 @@ function Contact ()
                             </UnorderedList>   
                         </CardBody>
                         <CardFooter
-                            justify='space-between'
-                            flexWrap='wrap'
                             sx={{
                             '& > button': {
-                                minW: '100px',
+                                minW: '200px',
                             },
                             }}
                         >
-                        <IconButton
-                            variant='outline'
-                            colorScheme='teal'
-                            aria-label='Call Sage'
-                            fontSize='20px'
-                            icon={<FaGithub />}
-                            />
-                        <IconButton
-                            variant='outline'
-                            colorScheme='teal'
-                            aria-label='Call Sage'
-                            fontSize='20px'
-                            icon={<FaLinkedin />}
-                            />
-                        <IconButton
-                            variant='outline'
-                            colorScheme='teal'
-                            aria-label='Call Sage'
-                            fontSize='20px'
-                            icon={<FaXTwitter />}
-                            />
-                        <IconButton
-                            variant='outline'
-                            colorScheme='teal'
-                            aria-label='Call Sage'
-                            fontSize='20px'
-                            icon={<FaThreads />}
-                            />
+                            <Link href='https://github.com/AlessandroDani'>
+                                <IconButton
+                                    variant='outline'
+                                    colorScheme='teal'
+                                    aria-label='Call Sage'
+                                    fontSize='20px'
+                                    icon={<FaGithub />}
+                                    />
+                            </Link>
+                            <Link href='https://www.linkedin.com/in/alessandro-umberto-daniele-saltarin-aa9b82252/'>
+                                <IconButton
+                                    variant='outline'
+                                    colorScheme='teal'
+                                    aria-label='Call Sage'
+                                    fontSize='20px'
+                                    icon={<FaLinkedin />}
+                                    />
+                            </Link>
+                            <Link href='https://x.com/SandroDaniele07'>
+                                <IconButton
+                                    variant='outline'
+                                    colorScheme='teal'
+                                    aria-label='Call Sage'
+                                    fontSize='20px'
+                                    icon={<FaXTwitter />}
+                                    />                        
+                            </Link>
+                            <Link href='https://www.threads.net/@danielealessandro07'>
+                                <IconButton
+                                    variant='outline'
+                                    colorScheme='teal'
+                                    aria-label='Call Sage'
+                                    fontSize='20px'
+                                    icon={<FaThreads />}
+                                    />
+                            </Link>
                         </CardFooter>
                     </Card>     
                     <Card maxW='md'>
@@ -87,40 +87,40 @@ function Contact ()
                             <Flex spacing='4'>
                             <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
                                 <Avatar name='Juan Ortiz' src={ProfileIMG2} />
-
                                 <Box>
-                                <Heading size='sm'>Juan David Ortiz Cano</Heading>
-                                <Text>System Engineering student</Text>
+                                    <Heading size='sm'>Juan David Ortiz Cano</Heading>
+                                    <Text>System Engineering student</Text>
                                 </Box>
                             </Flex>
-                            <IconButton
-                                variant='ghost'
-                                colorScheme='gray'
-                                aria-label='See menu'
-                            />
                             </Flex>
                         </CardHeader>
                         <CardBody>
                             <Text>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsa, amet, libero placeat iste commodi dolorem provident dolore ipsam eum quis odio quidem. Dolores delectus est consequuntur a eaque aspernatur blanditiis quia, omnis accusamus iure atque beatae itaque ipsam ea dolore autem voluptatum iusto quasi cupiditate? Nobis quas corporis repellat?
+                                Systems engineering student, interested in learning new growing technologies. Looking to improve 
+                                as a person and professional
                             </Text>
+                            <br></br>
+                            <UnorderedList>
+                                <ListItem>You can contact me at juandavidorca@ufps.edu.co</ListItem>
+                                <ListItem>I&apos;m learning React, Web development, Chakra</ListItem>
+                            </UnorderedList>                              
                         </CardBody>
                         <CardFooter
-                            justify='space-between'
-                            flexWrap='wrap'
                             sx={{
                             '& > button': {
                                 minW: '136px',
                             },
                             }}
                         >
-                        <IconButton
-                            variant='outline'
-                            colorScheme='blue'
-                            aria-label='Call Sage'
-                            fontSize='20px'
-                            icon={<FaGithub />}
-                            />
+                            <Link href='https://github.com/Juan1806y'>
+                                <IconButton
+                                    variant='outline'
+                                    colorScheme='blue'
+                                    aria-label='Call Sage'
+                                    fontSize='20px'
+                                    icon={<FaGithub />}
+                                />
+                            </Link>                            
                         </CardFooter>
                     </Card>  
                 </HStack>
