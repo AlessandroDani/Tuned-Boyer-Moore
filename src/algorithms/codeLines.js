@@ -1,5 +1,5 @@
 export const codeLines = [
-    `<span class="keyword">const</span> <span class="variable">ASIZE</span> = <span class="number">256</span>;`,
+    `<span class="keyword">const</span> <span class="variable">ASIZE</span> = <span class="number">65553</span>;`,
     `<span class="keyword">export</span> <span class="keyword">function</span> <span class="function">myAlgorithm</span>(<span class="variable">text</span>, <span class="variable">pattern</span>) {`,
     `  <span class="keyword">function</span> <span class="function">preBmBc</span>(<span class="variable">pattern</span>, <span class="variable">m</span>, <span class="variable">bmBc</span>) {`,
     `    <span class="keyword">for</span> (<span class="keyword">let</span> <span class="variable">i</span> = <span class="number">0</span>; <span class="variable">i</span> < <span class="variable">ASIZE</span>; ++<span class="variable">i</span>) {`,
