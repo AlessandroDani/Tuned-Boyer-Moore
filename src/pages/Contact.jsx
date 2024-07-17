@@ -14,14 +14,14 @@ function Contact ()
         <Layout>
             <Flex justify='center' align='center' m={15}>
                 <HStack>
-                    <Card maxW='md'>
+                    <Card maxW='md' minH='sm'>
                         <CardHeader>
                             <Flex spacing='4'>
                             <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
                                 <Avatar name='Alessandro Daniele' src={ProfileIMG1} />
                                 <Box>
                                     <Heading size='sm'>Alessandro Umberto Daniele Saltarin</Heading>
-                                    <Text fontSize='xs'>System Engineering student and junior developer</Text>
+                                    <Text fontSize='sm'>System Engineering student and junior developer</Text>
                                 </Box>
                             </Flex>
                             </Flex>
@@ -43,11 +43,12 @@ function Contact ()
                                 minW: '200px',
                             },
                             }}
+                            gap={2}
                         >
                             <Link href='https://github.com/AlessandroDani'>
                                 <IconButton
                                     variant='outline'
-                                    colorScheme='teal'
+                                    colorScheme='blue'
                                     aria-label='Call Sage'
                                     fontSize='20px'
                                     icon={<FaGithub />}
@@ -56,7 +57,7 @@ function Contact ()
                             <Link href='https://www.linkedin.com/in/alessandro-umberto-daniele-saltarin-aa9b82252/'>
                                 <IconButton
                                     variant='outline'
-                                    colorScheme='teal'
+                                    colorScheme='blue'
                                     aria-label='Call Sage'
                                     fontSize='20px'
                                     icon={<FaLinkedin />}
@@ -65,7 +66,7 @@ function Contact ()
                             <Link href='https://x.com/SandroDaniele07'>
                                 <IconButton
                                     variant='outline'
-                                    colorScheme='teal'
+                                    colorScheme='blue'
                                     aria-label='Call Sage'
                                     fontSize='20px'
                                     icon={<FaXTwitter />}
@@ -74,7 +75,7 @@ function Contact ()
                             <Link href='https://www.threads.net/@danielealessandro07'>
                                 <IconButton
                                     variant='outline'
-                                    colorScheme='teal'
+                                    colorScheme='blue'
                                     aria-label='Call Sage'
                                     fontSize='20px'
                                     icon={<FaThreads />}
@@ -82,14 +83,14 @@ function Contact ()
                             </Link>
                         </CardFooter>
                     </Card>     
-                    <Card maxW='md'>
+                    <Card maxW='md' minH='sm'>
                         <CardHeader>
                             <Flex spacing='4'>
                             <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
                                 <Avatar name='Juan Ortiz' src={ProfileIMG2} />
                                 <Box>
                                     <Heading size='sm'>Juan David Ortiz Cano</Heading>
-                                    <Text>System Engineering student</Text>
+                                    <Text  fontSize='sm'>System Engineering student</Text>
                                 </Box>
                             </Flex>
                             </Flex>
